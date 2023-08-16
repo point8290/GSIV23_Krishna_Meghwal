@@ -1,8 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
-
+import Header from "./components/Header";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div>
+      <Provider store={store}>
+        <Header />
+      </Provider>
+    </div>
+  );
 }
 
 export default App;
