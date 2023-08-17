@@ -1,12 +1,24 @@
-import React from "react";
-import { connect } from "react-redux";
+import Navbar from "react-bootstrap/Navbar";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-export const Header = (props) => {
-  return <div>Header</div>;
-};
+function Header() {
+  return (
+    <Navbar className="bg-body-tertiary justify-content-between">
+      <Form>
+        <Row>
+          <Col xs="auto">
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              className=" mr-sm-10"
+            />
+          </Col>
+        </Row>
+      </Form>
+    </Navbar>
+  );
+}
 
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
