@@ -1,17 +1,16 @@
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
+import "./MovieCard.css";
 function MovieCard(props) {
+  console.log(props);
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card className="p-2 m-2 xs-2 col-sm-2">
+      <Card.Img
+        variant="top"
+        src={"https://image.tmdb.org/t/p/original" + props.movie.poster_path}
+      />
       <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Title>{props.movie.title}</Card.Title>
+        <Card.Text className="wrapToTwoLines">{props.movie.overview}</Card.Text>
       </Card.Body>
     </Card>
   );

@@ -1,28 +1,27 @@
 import MovieCard from "../MovieCard/MovieCard";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../../redux/movies/moviesSlice";
-
+import { getMovies } from "../../redux/movies/moviesSlice";
+import "./Main.css";
 export const Main = (props) => {
   const movie = useSelector((state) => state.movie);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(getMovies());
   }, []);
+
   return (
-    <>
-      {movie && movie.loading && <h1> Loading ....</h1>}
-      {movie && !movie.loading && movie.error ? <h1> {movie.error}</h1> : ""}
-      {!movie.loading && movie.movies ? (
-        <h1>
+    <div className="movielist">
+      {movie && movie.movies ? (
+        <>
           {movie.movies.map((movie) => (
-            <MovieCard movie={movie} />
+            <MovieCard key={movie.id} movie={movie} />
           ))}
-        </h1>
+        </>
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 };
 
